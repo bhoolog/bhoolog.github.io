@@ -1,0 +1,14 @@
+title: Bhoologam
+email: your-email@example.com
+description: >- # this means to ignore newlines until "baseurl:"
+  Bridging the gap between academia and the public.
+baseurl: "" # Keep this empty for bhoolog.github.io
+url: "https://bhoolog.github.io"
+
+# THIS IS THE CRITICAL PART FOR FIXING LINKS
+permalink: /posts/:title/
+
+# Theme settings
+theme: minima
+plugins:
+  - jekyll-feed
