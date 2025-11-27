@@ -102,3 +102,50 @@ nav ul li a.active {
     }
 
 }
+/* --- MOBILE OPTIMIZATION FIXES --- */
+
+/* 1. Stop the page from wobbling left/right */
+html, body {
+    overflow-x: hidden; /* Cuts off anything sticking out the side */
+    width: 100%;
+}
+
+/* 2. Force long URLs and code to break lines */
+.post-content p, 
+.post-content a, 
+.post-content code {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word; /* Forces the long URL to snap to the next line */
+}
+
+/* 3. Allow the code block to wrap text */
+.post-content code {
+    white-space: pre-wrap; /* Ensures code doesn't stay on one infinite line */
+    max-width: 100%;       /* Ensures it never exceeds screen width */
+    display: inline-block; /* Helps applying width constraints */
+}
+
+/* 4. Fix the Mobile Navigation */
+@media (max-width: 768px) {
+    nav ul {
+        flex-wrap: wrap;       /* Allows menu items to drop to a second line */
+        justify-content: center;
+        padding: 0 10px;       /* Adds breathing room on sides */
+    }
+    
+    .logo {
+        font-size: 28px;       /* Slightly smaller logo for mobile */
+    }
+    
+    .post-title {
+        font-size: 28px;       /* Prevents huge titles from breaking layout */
+        word-break: break-word; 
+    }
+    
+    /* Ensure images don't overflow */
+    img, iframe {
+        max-width: 100% !important;
+        height: auto;
+    }
+}
