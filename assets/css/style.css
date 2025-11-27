@@ -102,3 +102,15 @@ nav ul li a.active {
     }
 
 }
+/* EMERGENCY VISIBILITY FIX */
+.page-post, .page-home {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Fix for the mobile scrolling issue (Safe Version) */
+html, body {
+    overflow-x: hidden; /* Prevents side-scroll */
+    min-height: 100vh;  /* Ensures body has height */
+}
