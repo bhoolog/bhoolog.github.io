@@ -11,7 +11,7 @@ title: Home
         <div class="container">
             <div class="featured-article">
                 <div>
-                    <img src="{{ featured.image | default: '/assets/images/default.jpg' }}" 
+                    <img src="{{ featured.image | relative_url | default: '/assets/images/default.jpg' }}" 
                          alt="{{ featured.title }}" 
                          class="featured-image">
                 </div>
@@ -31,10 +31,18 @@ title: Home
 
     <section class="categories">
         <div class="container">
+            <h2 class="section-title" style="font-size: 24px; margin-bottom: 20px;">Topics</h2>
             <div class="category-pills">
-                <a href="#" class="category-pill">Space Science</a>
-                <a href="#" class="category-pill">Marine Biology</a>
-                <a href="#" class="category-pill">Climate Change</a>
+                
+                {% for category in site.categories %}
+                    <a href="#" class="category-pill">
+                        {{ category[0] }} <span style="font-size: 0.8em; opacity: 0.6;">({{ category[1].size }})</span>
+                    </a>
+                {% endfor %}
+                {% if site.categories.size == 0 %}
+                    <p style="color: #777;">No categories found. Add 'categories: [Name]' to your posts.</p>
+                {% endif %}
+
             </div>
         </div>
     </section>
@@ -46,7 +54,7 @@ title: Home
                 
                 {% for post in site.posts offset:1 %}
                 <a href="{{ post.url | relative_url }}" class="post-card">
-                    <img src="{{ post.image | default: 'https://via.placeholder.com/400x250' }}" alt="{{ post.title }}" class="post-thumbnail">
+                    <img src="{{ post.image | relative_url | default: 'https://via.placeholder.com/400x250' }}" alt="{{ post.title }}" class="post-thumbnail">
                     <div class="meta">
                         <span class="author">{{ post.author }}</span>
                         <span>•</span>
